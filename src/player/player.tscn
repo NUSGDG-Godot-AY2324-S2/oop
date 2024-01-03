@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://dp0wmpyymvkkt"]
+[gd_scene load_steps=42 format=3 uid="uid://dp0wmpyymvkkt"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_4fnq1"]
 [ext_resource type="Texture2D" uid="uid://b4h0c3ga3uk8i" path="res://assets/sprites/characters/player.png" id="1_823hv"]
+[ext_resource type="PackedScene" uid="uid://d26nrgw1jvyh6" path="res://UI/UI.tscn" id="3_31tx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgjj8"]
 size = Vector2(12, 20)
@@ -306,6 +307,8 @@ autoplay = "idle-down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)
+
+[node name="UI" parent="Camera2D" instance=ExtResource("3_31tx8")]
 
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
