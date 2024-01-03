@@ -6,8 +6,16 @@ var last_vertical_direction: int = 0
 var horizontal_direction: int = 0
 var vertical_direction: int = 0
 
+const MAX_HEALTH: int = 100
+var health: int = MAX_HEALTH
+var is_taking_damage: bool = false
+
 var animated_sprite: AnimatedSprite2D
 var camera: Camera2D
+
+const Bullet = preload("res://player/skills/bullet.tscn")
+var can_attack: bool = true
+
 
 func _ready():
 	animated_sprite = $AnimatedSprite2D
@@ -28,6 +36,7 @@ func adjust_camera_limits():
 func _physics_process(delta: float):
 	make_movement()
 	adjust_animation()
+	attack()
 
 
 func make_movement():
@@ -58,6 +67,19 @@ func adjust_animation():
 			animated_sprite.scale.x = -abs(animated_sprite.scale.x)
 
 
+func attack():
+	if not Input.is_action_just_pressed("shoot") or not can_attack:
+		return
+	
+	can_attack = false
+	$AttackTimer.start()
+	
+	var direction: Vector2 = (get_global_mouse_position() - position).normalized()
+	var bullet = Bullet.instantiate()
+	bullet.set_parameters(direction, position)
+	get_parent().add_child(bullet)
+
+
 func play_idle_animation():
 	match last_horizontal_direction:
 		0:
@@ -77,3 +99,31 @@ func play_idle_animation():
 func attempt_animation(anim_name: String):
 	if animated_sprite.animation != anim_name:
 		animated_sprite.play(anim_name)
+
+
+func take_damage(damage: int):
+	if is_taking_damage:
+		return
+	is_taking_damage = true
+	$DamageTimer.start()
+	health -= damage
+	if health < 0:
+		die()
+
+
+func die():
+	queue_free()
+
+
+func _on_damage_timer_timeout():
+	is_taking_damage = false
+	animated_sprite.visible = true
+
+
+func _on_flash_timer_timeout():
+	if is_taking_damage:
+		animated_sprite.visible = !animated_sprite.visible
+
+
+func _on_attack_timer_timeout():
+	can_attack = true

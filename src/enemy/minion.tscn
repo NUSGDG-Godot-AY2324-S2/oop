@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgk5owuslomqt"]
+
+[ext_resource type="Script" path="res://enemy/minion.gd" id="1_o2d34"]
+[ext_resource type="Texture2D" uid="uid://ds0kbyydfdad7" path="res://assets/sprites/characters/slime.png" id="1_xbuap"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82j7x"]
+size = Vector2(16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fxfb"]
+atlas = ExtResource("1_xbuap")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q68be"]
+atlas = ExtResource("1_xbuap")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a6sx"]
+atlas = ExtResource("1_xbuap")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83m15"]
+atlas = ExtResource("1_xbuap")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2nyqw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fxfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q68be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a6sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83m15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Minion" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_o2d34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_82j7x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_2nyqw")
+autoplay = "default"
+frame_progress = 0.587007
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_bullet_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]

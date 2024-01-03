@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://btkjgha1x4l86"]
+[gd_scene load_steps=4 format=3 uid="uid://btkjgha1x4l86"]
 
 [ext_resource type="PackedScene" uid="uid://1xqnee3v0acb" path="res://map/map.tscn" id="1_pn60i"]
 [ext_resource type="PackedScene" uid="uid://dp0wmpyymvkkt" path="res://player/player.tscn" id="2_6jlaf"]
+[ext_resource type="PackedScene" uid="uid://cgk5owuslomqt" path="res://enemy/minion.tscn" id="3_opnsq"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,3 +10,6 @@
 
 [node name="Player" parent="." instance=ExtResource("2_6jlaf")]
 position = Vector2(99, 159)
+
+[node name="Minion" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(291, 106)
