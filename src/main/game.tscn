@@ -13,3 +13,45 @@ position = Vector2(99, 159)
 
 [node name="Minion" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(291, 106)
+
+[node name="Minion2" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(459, 291)
+
+[node name="Minion3" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(795, 220)
+
+[node name="Minion4" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1031, 88)
+
+[node name="Minion5" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1372, 281)
+
+[node name="Minion6" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1478, 523)
+
+[node name="Minion7" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1223, 616)
+
+[node name="Minion8" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(843, 587)
+
+[node name="Minion9" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(628, 730)
+
+[node name="Minion10" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(258, 527)
+
+[node name="Minion11" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(389, 1145)
+
+[node name="Minion12" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(612, 976)
+
+[node name="Minion13" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(842, 1072)
+
+[node name="Minion14" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1097, 998)
+
+[node name="Minion15" parent="." instance=ExtResource("3_opnsq")]
+position = Vector2(1310, 1139)

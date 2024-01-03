@@ -6,6 +6,7 @@ By the end of this session, the following features should have been completed:
 
 * Minions have different bullets
 * Frequency of bullets increases as the number of minions shot increases.
+* Minions should only start shooting when player has arrived at the same level.
 * Linking user health to health bar.
 * (Code quality) Reduce the user of `_ready` function.
 
