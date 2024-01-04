@@ -9,6 +9,7 @@ var vertical_direction: int = 0
 const MAX_HEALTH: int = 100
 var health: int = MAX_HEALTH
 var is_taking_damage: bool = false
+signal health_changed
 
 var animated_sprite: AnimatedSprite2D
 var camera: Camera2D
@@ -107,6 +108,7 @@ func take_damage(damage: int):
 	is_taking_damage = true
 	$DamageTimer.start()
 	health -= damage
+	health_changed.emit(health)
 	if health < 0:
 		die()
 
