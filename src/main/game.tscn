@@ -28,30 +28,40 @@ position = Vector2(1372, 281)
 
 [node name="Minion6" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(1478, 523)
+game_state = 1
 
 [node name="Minion7" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(1223, 616)
+game_state = 1
 
 [node name="Minion8" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(843, 587)
+game_state = 1
 
 [node name="Minion9" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(628, 730)
+game_state = 1
 
 [node name="Minion10" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(258, 527)
+game_state = 1
 
 [node name="Minion11" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(389, 1145)
+game_state = 2
 
 [node name="Minion12" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(612, 976)
+game_state = 2
 
 [node name="Minion13" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(842, 1072)
+game_state = 2
 
 [node name="Minion14" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(1097, 998)
+game_state = 2
 
 [node name="Minion15" parent="." instance=ExtResource("3_opnsq")]
 position = Vector2(1310, 1139)
+game_state = 2

@@ -8,11 +8,16 @@ var animated_sprite: AnimatedSprite2D
 var player: CharacterBody2D
 
 var Bullet = preload("res://enemy/bullets/bullet1.tscn")
+@export var game_state: int
 
 
 func _ready():
 	animated_sprite = $AnimatedSprite2D
 	player = get_parent().get_node("Player")
+	if game_state == 0:
+		$BulletTimer.start()
+	else:
+		State.get_instance().state_changed.connect(activate_bullet)
 
 
 func _physics_process(delta: float):
@@ -52,3 +57,8 @@ func _on_flash_timer_timeout():
 func _on_damage_timer_timeout():
 	is_taking_damage = false
 	animated_sprite.visible = true
+
+
+func activate_bullet(state: int):
+	if state == self.game_state:
+		$BulletTimer.start()
