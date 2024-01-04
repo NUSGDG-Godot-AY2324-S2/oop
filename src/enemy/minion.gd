@@ -4,15 +4,19 @@ const MAX_HEALTH: int = 100
 var health: int = MAX_HEALTH
 var is_taking_damage: bool = false
 
-var animated_sprite: AnimatedSprite2D
-var player: CharacterBody2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: CharacterBody2D = get_parent().get_node("Player")
 
-var Bullet = preload("res://enemy/bullets/bullet1.tscn")
+@export var Bullet: Resource
+@export var game_state: int
 
 
 func _ready():
-	animated_sprite = $AnimatedSprite2D
-	player = get_parent().get_node("Player")
+	if game_state == 0:
+		$BulletTimer.start()
+	else:
+		State.get_instance().state_changed.connect(activate_bullet)
+	State.get_instance().minion_kill_increased.connect(increase_bullet_rate)
 
 
 func _physics_process(delta: float):
@@ -41,6 +45,7 @@ func take_damage(damage: int):
 
 
 func die():
+	State.get_instance().add_minion_kill_count()
 	queue_free()
 
 
@@ -52,3 +57,12 @@ func _on_flash_timer_timeout():
 func _on_damage_timer_timeout():
 	is_taking_damage = false
 	animated_sprite.visible = true
+
+
+func activate_bullet(state: int):
+	if state == self.game_state:
+		$BulletTimer.start()
+
+
+func increase_bullet_rate():
+	$BulletTimer.wait_time -= 0.1

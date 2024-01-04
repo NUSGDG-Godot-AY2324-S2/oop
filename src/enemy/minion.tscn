@@ -58,7 +58,6 @@ frame_progress = 0.587007
 
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true

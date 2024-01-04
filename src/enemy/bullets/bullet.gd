@@ -1,7 +1,7 @@
 extends Area2D
 
-var damage: int = 10
-var speed: int = 3
+@export var damage: int
+@export var speed: int
 var direction: Vector2
 
 
