@@ -7,7 +7,7 @@ var is_taking_damage: bool = false
 var animated_sprite: AnimatedSprite2D
 var player: CharacterBody2D
 
-var Bullet = preload("res://enemy/bullets/bullet1.tscn")
+@export var Bullet: Resource
 @export var game_state: int
 
 
