@@ -18,6 +18,7 @@ func _ready():
 		$BulletTimer.start()
 	else:
 		State.get_instance().state_changed.connect(activate_bullet)
+	State.get_instance().minion_kill_increased.connect(increase_bullet_rate)
 
 
 func _physics_process(delta: float):
@@ -46,6 +47,7 @@ func take_damage(damage: int):
 
 
 func die():
+	State.get_instance().add_minion_kill_count()
 	queue_free()
 
 
@@ -62,3 +64,7 @@ func _on_damage_timer_timeout():
 func activate_bullet(state: int):
 	if state == self.game_state:
 		$BulletTimer.start()
+
+
+func increase_bullet_rate():
+	$BulletTimer.wait_time -= 0.1
