@@ -4,16 +4,14 @@ const MAX_HEALTH: int = 100
 var health: int = MAX_HEALTH
 var is_taking_damage: bool = false
 
-var animated_sprite: AnimatedSprite2D
-var player: CharacterBody2D
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: CharacterBody2D = get_parent().get_node("Player")
 
 @export var Bullet: Resource
 @export var game_state: int
 
 
 func _ready():
-	animated_sprite = $AnimatedSprite2D
-	player = get_parent().get_node("Player")
 	if game_state == 0:
 		$BulletTimer.start()
 	else:
